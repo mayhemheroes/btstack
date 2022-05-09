@@ -1,0 +1,6 @@
+project: btstack
+target: ad_parser
+
+cmds:
+  - cmd: /fuzz_ad_parser 
+    libfuzzer: true
