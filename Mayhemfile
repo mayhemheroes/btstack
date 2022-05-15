@@ -2,5 +2,5 @@ project: rnshah9/mayhem-btstack
 target: ad_parser
 
 cmds:
-  - cmd: ./fuzz_ad_parser 
+  - cmd: /fuzz_ad_parser 
     libfuzzer: true
