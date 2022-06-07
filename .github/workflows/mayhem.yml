@@ -3,7 +3,7 @@ on:
   push:
   pull_request:
   workflow_dispatch:
-
+  workflow_call:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -11,7 +11,7 @@ env:
 jobs:
   build:
     permissions: write-all
-    name: '${{ matrix.os }} shared=${{ matrix.shared }} ${{ matrix.build_type }}'
+    name: ${{ matrix.os }} shared=${{ matrix.shared }} ${{ matrix.build_type }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -50,11 +50,10 @@ jobs:
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ steps.meta.outputs.tags }}
+          args: --image ${{ steps.meta.outputs.tags }} --duration 300
           sarif-output: sarif
 
       - name: Upload SARIF file(s)
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: sarif
-
