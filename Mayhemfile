@@ -1,4 +1,4 @@
-project: rnshah9/mayhem-btstack
+project: btstack
 target: ad_parser
 
 cmds:
