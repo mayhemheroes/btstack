@@ -4,7 +4,7 @@ FROM --platform=linux/amd64 ubuntu:20.04 as builder
 RUN apt-get update
 RUN apt-get install -y clang gdb lldb cmake ninja-build
 
-ADD . /btstack
+COPY . /btstack
 WORKDIR /btstack/test/fuzz/build
 RUN cmake ..
 RUN make
